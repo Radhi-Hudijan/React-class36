@@ -4,17 +4,21 @@ import "./index.css";
 import App from "./App";
 import ProductPage from "./components/ProductPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FavoriteProducts from "./components/FavoriteProducts";
+
+import { FavoriteIdProvider } from "./contexts/favouritesIDsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <FavoriteIdProvider>
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/favorite" element={<FavoriteProducts />} />
         <Route path="/product/:id" element={<ProductPage />} />
       </Routes>
     </Router>
-  </React.StrictMode>
+  </FavoriteIdProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
